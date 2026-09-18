@@ -515,12 +515,16 @@
     .news-card {
       transition: transform 0.4s var(--ease);
     }
+    .news-card a {
+      display: block;
+      color: inherit;
+    }
     .news-card:hover { transform: translateY(-6px); }
     .news-card img {
       width: 100%;
       aspect-ratio: 4 / 5;
       object-fit: cover;
-      object-position: center top;
+      object-position: center;
       border-radius: var(--radius);
       margin-bottom: 1rem;
       background: var(--charcoal);
@@ -941,29 +945,35 @@
             <p class="section-label">Lime News</p>
             <h2>Latest from Lime</h2>
             <p class="news-lead">
-              Project updates, apprenticeships and work underway across the South West.
+              Insights, project updates and expert guidance from the Lime Construction team.
             </p>
           </div>
-          <a class="btn btn-lime" href="https://limeconstructiongroup.co.uk/" target="_blank" rel="noopener">Explore all</a>
+          <a class="btn btn-lime" href="https://limeconstructiongroup.co.uk/#lime-news" target="_blank" rel="noopener">Explore all</a>
         </div>
         <div class="news-grid">
           <article class="news-card reveal">
-            <img src="assets/news-booster.jpg" alt="Critical booster pump upgrade project graphic" />
-            <p class="meta">Project going live</p>
-            <h3>Critical booster pump upgrade</h3>
-            <p>Upgrading water booster pumps for Realis Bristol to improve building resilience and prevent supply failure.</p>
+            <a href="https://limeconstructiongroup.co.uk/lime-news/me-system-failures-warning-signs-property-managers-miss/" target="_blank" rel="noopener">
+              <img src="assets/news-me.jpg" alt="" />
+              <p class="meta">Sep 16, 2026</p>
+              <h3>M&amp;E System Failures: The Warning Signs Property Managers Often Miss</h3>
+              <p>Most M&amp;E failures don’t happen without warning. They happen without anyone recognising the warning for what it was.</p>
+            </a>
           </article>
           <article class="news-card reveal">
-            <img src="assets/news-apprentice.jpg" alt="Apprenticeship spotlight on Callum Day" />
-            <p class="meta">Apprenticeship spotlight</p>
-            <h3>Callum Day</h3>
-            <p>Preparing for apprenticeship exams while building electrical installation skills through site experience and training.</p>
+            <a href="https://limeconstructiongroup.co.uk/lime-news/legionella-risk-assessments-landlords-guide/" target="_blank" rel="noopener">
+              <img src="assets/news-legionella.jpg" alt="" />
+              <p class="meta">Sep 9, 2026</p>
+              <h3>Legionella Risk Assessments: A Landlord’s Practical Guide</h3>
+              <p>Legionella isn’t the most talked-about landlord responsibility, but it’s one of the clearest — every landlord has a legal duty to assess.</p>
+            </a>
           </article>
           <article class="news-card reveal">
-            <img src="assets/news-carpark.jpg" alt="New car park project in Filton, Bristol" />
-            <p class="meta">Project going live</p>
-            <h3>New car park project underway</h3>
-            <p>From grassland to staff car park — Filton, Bristol.</p>
+            <a href="https://limeconstructiongroup.co.uk/lime-news/signs-your-commercial-heating-system-needs-replacing-not-repairing/" target="_blank" rel="noopener">
+              <img src="assets/news-heating.jpg" alt="" />
+              <p class="meta">Aug 26, 2026</p>
+              <h3>Signs Your Commercial Heating System Needs Replacing, Not Repairing</h3>
+              <p>Every commercial heating system eventually reaches a point where another repair stops making financial sense.</p>
+            </a>
           </article>
         </div>
       </div>
