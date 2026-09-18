@@ -270,16 +270,16 @@
       color: var(--muted-light);
     }
 
-    /* —— Split sections —— */
-    .split {
-      padding: 3.5rem 0 2rem;
+    /* —— About —— */
+    .about {
+      padding: 2rem 0 3rem;
     }
-    .split-stack {
+    .about-stack {
       display: flex;
       flex-direction: column;
-      gap: 2.75rem;
+      gap: 3rem;
     }
-    .mission-row {
+    .about-row {
       display: grid;
       grid-template-columns: 1fr 1.05fr;
       gap: 3rem;
@@ -293,7 +293,8 @@
       color: var(--lime-deep);
       margin-bottom: 0.65rem;
     }
-    .split h2,
+    .about h2,
+    .services h2,
     .process h2,
     .team h2,
     .quotes h2 {
@@ -304,10 +305,11 @@
       line-height: 1.15;
       margin: 0 0 1rem;
     }
-    .split p,
+    .about p,
     .process-lead,
     .team-lead,
-    .quotes-lead {
+    .quotes-lead,
+    .services-lead {
       color: var(--muted);
       margin: 0 0 1.25rem;
       max-width: 42ch;
@@ -342,12 +344,12 @@
 
     .media-stack {
       position: relative;
-      min-height: 320px;
+      min-height: 340px;
     }
     .media-stack img {
       border-radius: var(--radius);
       object-fit: cover;
-      box-shadow: 0 16px 40px rgba(18, 20, 18, 0.1);
+      box-shadow: 0 16px 40px rgba(18, 20, 18, 0.12);
     }
     .media-stack .main {
       width: 78%;
@@ -355,119 +357,139 @@
     }
     .media-stack .inset {
       position: absolute;
-      width: 42%;
+      width: 44%;
       aspect-ratio: 3 / 4;
       right: 0;
-      bottom: -1.5rem;
+      bottom: -1.75rem;
       border: 5px solid var(--paper);
-    }
-    .history-block {
-      background: var(--white);
-      border-radius: calc(var(--radius-lg) + 0.25rem);
-      padding: clamp(1.5rem, 3vw, 2.35rem);
-      border: 1px solid var(--line);
-      box-shadow: 0 20px 50px rgba(18, 20, 18, 0.05);
-    }
-    .history-inner {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 2.25rem;
-      align-items: center;
-    }
-    .history-collage {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 0.75rem;
-    }
-    .history-collage img {
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
-      border-radius: 1.1rem;
-    }
-    .history-collage img:nth-child(2) {
-      transform: translateY(1.25rem);
-    }
-    .vision-block {
-      padding-top: 0.5rem;
-    }
-    .vision-row {
-      display: grid;
-      grid-template-columns: 1fr 1.05fr;
-      gap: 3rem;
-      align-items: center;
-    }
-    .vision-media {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 0.85rem;
-    }
-    .vision-media img {
-      width: 100%;
-      border-radius: var(--radius);
-      object-fit: cover;
-      box-shadow: 0 16px 40px rgba(18, 20, 18, 0.1);
-    }
-    .vision-media img:first-child {
-      aspect-ratio: 4 / 3;
-      grid-row: span 2;
-      height: 100%;
-    }
-    .vision-media img:not(:first-child) {
-      aspect-ratio: 4 / 3;
+      z-index: 2;
     }
 
-    /* —— Process / video —— */
+    .about-card {
+      width: min(100% - 1.5rem, 1320px);
+      margin-inline: auto;
+      background: var(--white);
+      border-radius: calc(var(--radius-lg) + 0.35rem);
+      padding: clamp(1.75rem, 3.5vw, 2.75rem) clamp(1.5rem, 3vw, 2.75rem);
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 60px rgba(18, 20, 18, 0.06);
+    }
+    .about-card-inner {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: clamp(2rem, 4vw, 3.5rem);
+      align-items: center;
+    }
+    .about-overlap {
+      position: relative;
+      min-height: 360px;
+    }
+    .about-overlap img {
+      border-radius: var(--radius);
+      object-fit: cover;
+      box-shadow: 0 18px 44px rgba(18, 20, 18, 0.14);
+    }
+    .about-overlap .main {
+      width: 72%;
+      aspect-ratio: 4 / 3;
+      position: relative;
+      z-index: 1;
+    }
+    .about-overlap .mid {
+      position: absolute;
+      width: 38%;
+      aspect-ratio: 3 / 4;
+      right: 18%;
+      top: 8%;
+      z-index: 2;
+      border: 4px solid var(--white);
+    }
+    .about-overlap .inset {
+      position: absolute;
+      width: 36%;
+      aspect-ratio: 3 / 4;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      border: 4px solid var(--white);
+    }
+    .about-card .checklist li { max-width: none; }
+    .about-card p { max-width: 48ch; }
+
+    /* —— Services —— */
+    .services {
+      padding: 4rem 0 3rem;
+    }
+    .services-head {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .services-head .services-lead {
+      margin-inline: auto;
+      max-width: 48ch;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .service {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.75rem 1.5rem;
+      transition: border-color 0.3s var(--ease), transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+    .service:hover {
+      border-color: rgba(126, 194, 66, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(18, 20, 18, 0.07);
+    }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--lime-soft);
+      color: var(--lime-deep);
+      display: grid;
+      place-items: center;
+      margin-bottom: 1.15rem;
+    }
+    .service-icon svg { width: 24px; height: 24px; }
+    .service h3 {
+      font-family: var(--display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: 0 0 0.6rem;
+      letter-spacing: -0.02em;
+    }
+    .service p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* —— Lime Way band —— */
     .process {
-      padding: 4rem 0 2rem;
+      padding: 3.5rem 0 2rem;
       text-align: center;
     }
     .process-lead {
       margin-inline: auto;
       max-width: 46ch;
     }
-    .video-frame {
-      position: relative;
-      margin-top: 2.5rem;
+    .feature-frame {
+      margin-top: 2.25rem;
       border-radius: var(--radius-lg);
       overflow: hidden;
       isolation: isolate;
     }
-    .video-frame img {
+    .feature-frame img {
       width: 100%;
       aspect-ratio: 21 / 9;
       object-fit: cover;
-      transform: scale(1.02);
-      transition: transform 1.2s var(--ease);
+      object-position: center 40%;
     }
-    .video-frame:hover img { transform: scale(1.06); }
-    .video-frame::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(18, 20, 18, 0.15), rgba(18, 20, 18, 0.45));
-    }
-    .play-btn {
-      position: absolute;
-      z-index: 2;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 78px;
-      height: 78px;
-      border-radius: 50%;
-      background: var(--lime);
-      color: var(--ink);
-      display: grid;
-      place-items: center;
-      box-shadow: 0 16px 40px rgba(126, 194, 66, 0.45);
-      transition: transform 0.35s var(--ease), background 0.35s var(--ease);
-    }
-    .play-btn:hover {
-      transform: translate(-50%, -50%) scale(1.08);
-      background: var(--white);
-    }
-    .play-btn svg { width: 28px; height: 28px; margin-left: 3px; }
 
     /* —— Team —— */
     .team {
@@ -621,23 +643,22 @@
         gap: 1rem;
       }
       .hero-grid,
-      .mission-row,
-      .history-inner,
-      .vision-row,
+      .about-row,
+      .about-card-inner,
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
       .stats { grid-template-columns: 1fr 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
       .team-grid { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; }
       .quote-grid { grid-template-columns: 1fr; }
       .team-head { flex-direction: column; align-items: flex-start; }
       .hero-badge { left: 1rem; bottom: 1rem; width: 96px; height: 96px; }
-      .video-frame img { aspect-ratio: 16 / 10; }
-      .history-collage img:nth-child(2) { transform: none; }
-      .vision-media { grid-template-columns: 1fr 1fr; }
-      .vision-media img:first-child { grid-row: auto; aspect-ratio: 4 / 3; }
+      .feature-frame img { aspect-ratio: 16 / 10; }
+      .about-overlap { min-height: 300px; }
+      .about-overlap .mid { right: 12%; }
     }
     @media (max-width: 560px) {
       .stats { grid-template-columns: 1fr; }
-      .vision-media { grid-template-columns: 1fr; }
+      .about-overlap .mid { display: none; }
     }
   </style>
 </head>
@@ -723,11 +744,11 @@
       </div>
     </section>
 
-    <section class="split" id="services">
-      <div class="wrap split-stack">
-        <div class="mission-row">
+    <section class="about">
+      <div class="about-stack">
+        <div class="wrap about-row">
           <div class="reveal">
-            <p class="section-label">Our mission</p>
+            <p class="section-label">About us</p>
             <h2>We build with care, not just with tools.</h2>
             <p>
               We prioritise professionalism, family values and a culture of respect. Whether it’s a small repair, regular maintenance or full-scale refurbishment, we think ahead, embrace feedback and learn from every experience.
@@ -757,15 +778,15 @@
           </div>
         </div>
 
-        <div class="history-block reveal">
-          <div class="history-inner">
-            <div class="history-collage">
-              <img src="assets/hero-site.jpg" alt="Lime Construction Group van" />
-              <img src="assets/site-value.jpg" alt="Lime Construction project work" />
-              <img src="assets/site-residential.jpg" alt="Residential construction" />
+        <div class="about-card reveal">
+          <div class="about-card-inner">
+            <div class="about-overlap">
+              <img class="main" src="assets/hero-site.jpg" alt="Lime Construction Group van" />
+              <img class="mid" src="assets/site-value.jpg" alt="Lime Construction project work" />
+              <img class="inset" src="assets/site-residential.jpg" alt="Residential construction" />
             </div>
             <div>
-              <p class="section-label">Our history</p>
+              <p class="section-label">The Lime story</p>
               <h2>Welcome to Lime Construction.</h2>
               <p>
                 Our team has over 30 years’ experience in building fabric works, facilities management, mechanical &amp; electrical and plumbing &amp; heating. Over the past five years we have deepened partnerships with commercial clients, property managers and social housing providers.
@@ -794,36 +815,40 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="vision-block">
-          <div class="vision-row">
-            <div class="reveal">
-              <p class="section-label">Our vision</p>
-              <h2>Your project. Your vision. Made real.</h2>
-              <p>
-                From reactive call-outs to planned programmes of work, we combine technical expertise with a client-focused approach — keeping buildings functional, compliant and fit for purpose.
-              </p>
-              <ul class="checklist">
-                <li>
-                  <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
-                  Residential, social housing, commercial &amp; industrial
-                </li>
-                <li>
-                  <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
-                  Planned and reactive maintenance
-                </li>
-                <li>
-                  <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
-                  Project management &amp; compliance
-                </li>
-              </ul>
+    <section class="services" id="services">
+      <div class="wrap">
+        <div class="services-head reveal">
+          <p class="section-label">Services</p>
+          <h2>Your project. Your vision. Made real.</h2>
+          <p class="services-lead">
+            From reactive call-outs to full-scale refurbishment — facilities management, M&amp;E and plumbing &amp; heating across the South West.
+          </p>
+        </div>
+        <div class="services-grid">
+          <article class="service reveal">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
             </div>
-            <div class="vision-media reveal">
-              <img src="assets/site-faucets.jpg" alt="Plumbing specification and fit-out" />
-              <img src="assets/team-training.jpg" alt="Lime team training session" />
-              <img src="assets/team-meeting.jpg" alt="Lime Construction team meeting" />
+            <h3>Build &amp; Facilities Management</h3>
+            <p>High-quality builds and renovations across residential, social housing, commercial and industrial — plus planned and reactive maintenance.</p>
+          </article>
+          <article class="service reveal">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg>
             </div>
-          </div>
+            <h3>Mechanical &amp; Electrical</h3>
+            <p>Certified electrical installations, upgrades and testing — supporting safe, efficient and fully compliant project delivery.</p>
+          </article>
+          <article class="service reveal">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v3M8 8h8M7 21h10a2 2 0 0 0 2-2v-7a6 6 0 0 0-12 0v7a2 2 0 0 0 2 2z"/></svg>
+            </div>
+            <h3>Plumbing &amp; Heating</h3>
+            <p>Reliable plumbing, heating and boiler works to keep your property running smoothly through every season.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -831,17 +856,14 @@
     <section class="process" id="how">
       <div class="wrap">
         <div class="reveal">
-          <p class="section-label">How we work</p>
+          <p class="section-label">The Lime Way</p>
           <h2>Clear process. Careful delivery.</h2>
           <p class="process-lead">
-            From first conversation to handover, we plan ahead, communicate clearly and leave sites better than we found them — The Lime Way.
+            From first conversation to handover, we plan ahead, communicate clearly and leave sites better than we found them.
           </p>
         </div>
-        <div class="video-frame reveal">
+        <div class="feature-frame reveal">
           <img src="assets/team-meeting.jpg" alt="Lime Construction team gathered around the table" />
-          <button class="play-btn" type="button" aria-label="Play film (placeholder)">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </button>
         </div>
       </div>
     </section>
