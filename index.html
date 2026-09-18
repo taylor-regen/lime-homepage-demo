@@ -295,8 +295,7 @@
     }
     .about h2,
     .services h2,
-    .process h2,
-    .team h2,
+    .news h2,
     .quotes h2 {
       font-family: var(--display);
       font-size: clamp(1.9rem, 3.2vw, 2.65rem);
@@ -306,8 +305,7 @@
       margin: 0 0 1rem;
     }
     .about p,
-    .process-lead,
-    .team-lead,
+    .news-lead,
     .quotes-lead,
     .services-lead {
       color: var(--muted);
@@ -382,7 +380,7 @@
     }
     .about-overlap {
       position: relative;
-      min-height: 360px;
+      min-height: 340px;
     }
     .about-overlap img {
       border-radius: var(--radius);
@@ -395,23 +393,14 @@
       position: relative;
       z-index: 1;
     }
-    .about-overlap .mid {
-      position: absolute;
-      width: 38%;
-      aspect-ratio: 3 / 4;
-      right: 18%;
-      top: 8%;
-      z-index: 2;
-      border: 4px solid var(--white);
-    }
     .about-overlap .inset {
       position: absolute;
-      width: 36%;
+      width: 46%;
       aspect-ratio: 3 / 4;
       right: 0;
-      bottom: 0;
-      z-index: 3;
-      border: 4px solid var(--white);
+      bottom: -0.5rem;
+      z-index: 2;
+      border: 5px solid var(--white);
     }
     .about-card .checklist li { max-width: none; }
     .about-card p { max-width: 48ch; }
@@ -501,66 +490,62 @@
       line-height: 1.45;
     }
 
-    /* —— Lime Way band —— */
-    .process {
-      padding: 3.5rem 0 2rem;
-      text-align: center;
-    }
-    .process-lead {
-      margin-inline: auto;
-      max-width: 46ch;
-    }
-    .feature-frame {
-      margin-top: 2.25rem;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      isolation: isolate;
-    }
-    .feature-frame img {
-      width: 100%;
-      aspect-ratio: 21 / 9;
-      object-fit: cover;
-      object-position: center 40%;
-    }
-
-    /* —— Team —— */
-    .team {
+    /* —— Lime News —— */
+    .news {
       padding: 5rem 0 3rem;
     }
-    .team-head {
+    .news-head {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
       gap: 2rem;
       margin-bottom: 2.5rem;
     }
-    .team-head .text { max-width: 36rem; }
-    .team-grid {
+    .news-head .text { max-width: 36rem; }
+    .news-lead {
+      color: var(--muted);
+      margin: 0;
+      max-width: 42ch;
+    }
+    .news-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
-    .person {
+    .news-card {
       transition: transform 0.4s var(--ease);
     }
-    .person:hover { transform: translateY(-6px); }
-    .person img {
+    .news-card:hover { transform: translateY(-6px); }
+    .news-card img {
       width: 100%;
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 4 / 5;
       object-fit: cover;
+      object-position: center top;
       border-radius: var(--radius);
       margin-bottom: 1rem;
+      background: var(--charcoal);
     }
-    .person h3 {
+    .news-card .meta {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--lime-deep);
+      margin: 0 0 0.35rem;
+    }
+    .news-card h3 {
       font-family: var(--display);
       font-size: 1.2rem;
       font-weight: 600;
-      margin: 0 0 0.2rem;
+      margin: 0 0 0.4rem;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
     }
-    .person p {
+    .news-card p {
       margin: 0;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--muted);
+      line-height: 1.45;
     }
 
     /* —— Quotes —— */
@@ -679,18 +664,15 @@
       .about-card-inner,
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
       .stats { grid-template-columns: 1fr 1fr; }
-      .team-grid { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; }
+      .news-grid { grid-template-columns: 1fr; max-width: 400px; margin-inline: auto; }
       .quote-grid { grid-template-columns: 1fr; }
-      .team-head { flex-direction: column; align-items: flex-start; }
+      .news-head { flex-direction: column; align-items: flex-start; }
       .hero-badge { left: 1rem; bottom: 1rem; width: 96px; height: 96px; }
-      .feature-frame img { aspect-ratio: 16 / 10; }
-      .about-overlap { min-height: 300px; }
-      .about-overlap .mid { right: 12%; }
+      .about-overlap { min-height: 280px; }
       .service-track { grid-auto-columns: minmax(220px, 72vw); }
     }
     @media (max-width: 560px) {
       .stats { grid-template-columns: 1fr; }
-      .about-overlap .mid { display: none; }
     }
   </style>
 </head>
@@ -704,8 +686,7 @@
         <li><a class="is-active" href="#top">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#how">How we work</a></li>
-        <li><a href="#team">Team</a></li>
+        <li><a href="#news">News</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <a class="btn btn-dark" href="#contact">Book a Job</a>
@@ -814,7 +795,6 @@
           <div class="about-card-inner">
             <div class="about-overlap">
               <img class="main" src="assets/hero-site.jpg" alt="Lime Construction Group van" />
-              <img class="mid" src="assets/site-value.jpg" alt="Lime Construction project work" />
               <img class="inset" src="assets/site-residential.jpg" alt="Residential construction" />
             </div>
             <div>
@@ -887,12 +867,6 @@
             <p class="desc">Expert installation and repair of lighting, power systems and appliances.</p>
           </article>
           <article class="service-card">
-            <div class="service-card-media is-lime" aria-hidden="true"><span>PAT<br />Testing</span></div>
-            <p class="meta">Electrical · Compliance</p>
-            <h3>PAT Testing</h3>
-            <p class="desc">Ensuring electrical appliances are safe, reliable and compliant with regulations.</p>
-          </article>
-          <article class="service-card">
             <div class="service-card-media">
               <img src="assets/site-residential.jpg" alt="" loading="lazy" />
             </div>
@@ -960,48 +934,36 @@
       </div>
     </section>
 
-    <section class="process" id="how">
+    <section class="news" id="news">
       <div class="wrap">
-        <div class="reveal">
-          <p class="section-label">The Lime Way</p>
-          <h2>Clear process. Careful delivery.</h2>
-          <p class="process-lead">
-            From first conversation to handover, we plan ahead, communicate clearly and leave sites better than we found them.
-          </p>
-        </div>
-        <div class="feature-frame reveal">
-          <img src="assets/team-meeting.jpg" alt="Lime Construction team gathered around the table" />
-        </div>
-      </div>
-    </section>
-
-    <section class="team" id="team">
-      <div class="wrap">
-        <div class="team-head reveal">
+        <div class="news-head reveal">
           <div class="text">
-            <p class="section-label">Our people</p>
-            <h2>Crafting excellence as a team</h2>
-            <p class="team-lead">
-              The Lime crew — professionalism, family values and respect, on site and in the office.
+            <p class="section-label">Lime News</p>
+            <h2>Latest from Lime</h2>
+            <p class="news-lead">
+              Project updates, apprenticeships and work underway across the South West.
             </p>
           </div>
-          <a class="btn btn-lime" href="#contact">Explore all</a>
+          <a class="btn btn-lime" href="https://limeconstructiongroup.co.uk/" target="_blank" rel="noopener">Explore all</a>
         </div>
-        <div class="team-grid">
-          <article class="person reveal">
-            <img src="assets/team-van.jpg" alt="Lime Construction team member by the company van" />
-            <h3>On the tools</h3>
-            <p>Site &amp; delivery</p>
+        <div class="news-grid">
+          <article class="news-card reveal">
+            <img src="assets/news-booster.jpg" alt="Critical booster pump upgrade project graphic" />
+            <p class="meta">Project going live</p>
+            <h3>Critical booster pump upgrade</h3>
+            <p>Upgrading water booster pumps for Realis Bristol to improve building resilience and prevent supply failure.</p>
           </article>
-          <article class="person reveal">
-            <img src="assets/team-trades.jpg" alt="Lime Construction tradesperson" />
-            <h3>Craft &amp; finish</h3>
-            <p>Building fabric</p>
+          <article class="news-card reveal">
+            <img src="assets/news-apprentice.jpg" alt="Apprenticeship spotlight on Callum Day" />
+            <p class="meta">Apprenticeship spotlight</p>
+            <h3>Callum Day</h3>
+            <p>Preparing for apprenticeship exams while building electrical installation skills through site experience and training.</p>
           </article>
-          <article class="person reveal">
-            <img src="assets/team-natalie.jpg" alt="Natalie, Lime Construction Group" />
-            <h3>Natalie</h3>
-            <p>Lime Construction Group</p>
+          <article class="news-card reveal">
+            <img src="assets/news-carpark.jpg" alt="New car park project in Filton, Bristol" />
+            <p class="meta">Project going live</p>
+            <h3>New car park project underway</h3>
+            <p>From grassland to staff car park — Filton, Bristol.</p>
           </article>
         </div>
       </div>
