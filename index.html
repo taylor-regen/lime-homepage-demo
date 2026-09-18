@@ -272,13 +272,18 @@
 
     /* —— Split sections —— */
     .split {
-      padding: 3.5rem 0;
+      padding: 3.5rem 0 2rem;
     }
-    .split-grid {
+    .split-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 2.75rem;
+    }
+    .mission-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem 3.5rem;
-      align-items: start;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 3rem;
+      align-items: center;
     }
     .section-label {
       font-size: 0.78rem;
@@ -337,8 +342,7 @@
 
     .media-stack {
       position: relative;
-      margin-top: 2rem;
-      min-height: 280px;
+      min-height: 320px;
     }
     .media-stack img {
       border-radius: var(--radius);
@@ -360,15 +364,20 @@
     .history-block {
       background: var(--white);
       border-radius: calc(var(--radius-lg) + 0.25rem);
-      padding: 2rem;
+      padding: clamp(1.5rem, 3vw, 2.35rem);
       border: 1px solid var(--line);
       box-shadow: 0 20px 50px rgba(18, 20, 18, 0.05);
+    }
+    .history-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 2.25rem;
+      align-items: center;
     }
     .history-collage {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 0.75rem;
-      margin-bottom: 1.75rem;
     }
     .history-collage img {
       width: 100%;
@@ -378,6 +387,34 @@
     }
     .history-collage img:nth-child(2) {
       transform: translateY(1.25rem);
+    }
+    .vision-block {
+      padding-top: 0.5rem;
+    }
+    .vision-row {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .vision-media {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 0.85rem;
+    }
+    .vision-media img {
+      width: 100%;
+      border-radius: var(--radius);
+      object-fit: cover;
+      box-shadow: 0 16px 40px rgba(18, 20, 18, 0.1);
+    }
+    .vision-media img:first-child {
+      aspect-ratio: 4 / 3;
+      grid-row: span 2;
+      height: 100%;
+    }
+    .vision-media img:not(:first-child) {
+      aspect-ratio: 4 / 3;
     }
 
     /* —— Process / video —— */
@@ -446,8 +483,8 @@
     .team-head .text { max-width: 36rem; }
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.25rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
     }
     .person {
       transition: transform 0.4s var(--ease);
@@ -584,20 +621,23 @@
         gap: 1rem;
       }
       .hero-grid,
-      .split-grid,
+      .mission-row,
+      .history-inner,
+      .vision-row,
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
       .stats { grid-template-columns: 1fr 1fr; }
-      .team-grid { grid-template-columns: 1fr 1fr; }
+      .team-grid { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; }
       .quote-grid { grid-template-columns: 1fr; }
       .team-head { flex-direction: column; align-items: flex-start; }
       .hero-badge { left: 1rem; bottom: 1rem; width: 96px; height: 96px; }
       .video-frame img { aspect-ratio: 16 / 10; }
-      .history-block { order: -1; }
+      .history-collage img:nth-child(2) { transform: none; }
+      .vision-media { grid-template-columns: 1fr 1fr; }
+      .vision-media img:first-child { grid-row: auto; aspect-ratio: 4 / 3; }
     }
     @media (max-width: 560px) {
-      .stats,
-      .team-grid { grid-template-columns: 1fr; }
-      .history-collage img:nth-child(2) { transform: none; }
+      .stats { grid-template-columns: 1fr; }
+      .vision-media { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -635,7 +675,7 @@
           </div>
         </div>
         <div class="hero-visual reveal">
-          <img src="assets/hero-team.jpg" alt="Construction professionals reviewing plans on site" />
+          <img src="assets/site-handshake.jpg" alt="Lime Construction team greeting on site" />
           <div class="hero-badge" aria-hidden="true">
             <svg viewBox="0 0 120 120">
               <circle cx="60" cy="60" r="28" fill="#7ec242" />
@@ -684,8 +724,8 @@
     </section>
 
     <section class="split" id="services">
-      <div class="wrap split-grid">
-        <div>
+      <div class="wrap split-stack">
+        <div class="mission-row">
           <div class="reveal">
             <p class="section-label">Our mission</p>
             <h2>We build with care, not just with tools.</h2>
@@ -712,69 +752,78 @@
             </ul>
           </div>
           <div class="media-stack reveal">
-            <img class="main" src="assets/mission-plans.jpg" alt="Hands reviewing architectural drawings" />
-            <img class="inset" src="assets/mission-site.jpg" alt="Construction team on site" />
-          </div>
-
-          <div class="reveal" style="margin-top: 4rem;">
-            <p class="section-label">Our vision</p>
-            <h2>Your project. Your vision. Made real.</h2>
-            <p>
-              From reactive call-outs to planned programmes of work, we combine technical expertise with a client-focused approach — keeping buildings functional, compliant and fit for purpose.
-            </p>
-            <ul class="checklist">
-              <li>
-                <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
-                Residential, social housing, commercial &amp; industrial
-              </li>
-              <li>
-                <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
-                Planned and reactive maintenance
-              </li>
-              <li>
-                <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
-                Project management &amp; compliance
-              </li>
-            </ul>
-          </div>
-          <div class="media-stack reveal">
-            <img class="main" src="assets/vision-survey.jpg" alt="Surveyor measuring on a construction site" />
-            <img class="inset" src="assets/vision-team.jpg" alt="Engineers collaborating outdoors" />
+            <img class="main" src="assets/site-ceiling.jpg" alt="Lime team member completing ceiling works on site" />
+            <img class="inset" src="assets/site-img7625.jpg" alt="Lime Construction Group office" />
           </div>
         </div>
 
         <div class="history-block reveal">
-          <div class="history-collage">
-            <img src="assets/history-1.jpg" alt="Tradesperson at work" />
-            <img src="assets/history-2.jpg" alt="Electrical installation work" />
-            <img src="assets/history-3.jpg" alt="Construction collaboration" />
+          <div class="history-inner">
+            <div class="history-collage">
+              <img src="assets/hero-site.jpg" alt="Lime Construction Group van" />
+              <img src="assets/site-value.jpg" alt="Lime Construction project work" />
+              <img src="assets/site-residential.jpg" alt="Residential construction" />
+            </div>
+            <div>
+              <p class="section-label">Our history</p>
+              <h2>Welcome to Lime Construction.</h2>
+              <p>
+                Our team has over 30 years’ experience in building fabric works, facilities management, mechanical &amp; electrical and plumbing &amp; heating. Over the past five years we have deepened partnerships with commercial clients, property managers and social housing providers.
+              </p>
+              <p>
+                We are proud of a knowledgeable team supported by a trusted supply chain — ensuring projects support the communities we serve while holding the highest standards.
+              </p>
+              <ul class="checklist">
+                <li>
+                  <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+                  Deep roots in building fabric &amp; FM
+                </li>
+                <li>
+                  <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+                  Growing commercial &amp; social housing partnerships
+                </li>
+                <li>
+                  <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+                  Trusted supply chain, high standards
+                </li>
+                <li>
+                  <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+                  Construction · Refurbishment · Electrical · Plumbing · Heating
+                </li>
+              </ul>
+            </div>
           </div>
-          <p class="section-label">Our history</p>
-          <h2>Welcome to Lime Construction.</h2>
-          <p>
-            Our team has over 30 years’ experience in building fabric works, facilities management, mechanical &amp; electrical and plumbing &amp; heating. Over the past five years we have deepened partnerships with commercial clients, property managers and social housing providers.
-          </p>
-          <p>
-            We are proud of a knowledgeable team supported by a trusted supply chain — ensuring projects support the communities we serve while holding the highest standards.
-          </p>
-          <ul class="checklist">
-            <li>
-              <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
-              Deep roots in building fabric &amp; FM
-            </li>
-            <li>
-              <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
-              Growing commercial &amp; social housing partnerships
-            </li>
-            <li>
-              <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
-              Trusted supply chain, high standards
-            </li>
-            <li>
-              <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
-              Construction · Refurbishment · Electrical · Plumbing · Heating
-            </li>
-          </ul>
+        </div>
+
+        <div class="vision-block">
+          <div class="vision-row">
+            <div class="reveal">
+              <p class="section-label">Our vision</p>
+              <h2>Your project. Your vision. Made real.</h2>
+              <p>
+                From reactive call-outs to planned programmes of work, we combine technical expertise with a client-focused approach — keeping buildings functional, compliant and fit for purpose.
+              </p>
+              <ul class="checklist">
+                <li>
+                  <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+                  Residential, social housing, commercial &amp; industrial
+                </li>
+                <li>
+                  <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+                  Planned and reactive maintenance
+                </li>
+                <li>
+                  <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+                  Project management &amp; compliance
+                </li>
+              </ul>
+            </div>
+            <div class="vision-media reveal">
+              <img src="assets/site-faucets.jpg" alt="Plumbing specification and fit-out" />
+              <img src="assets/team-training.jpg" alt="Lime team training session" />
+              <img src="assets/team-meeting.jpg" alt="Lime Construction team meeting" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -789,7 +838,7 @@
           </p>
         </div>
         <div class="video-frame reveal">
-          <img src="assets/video-scaffold.jpg" alt="Construction workers on scaffolding" />
+          <img src="assets/team-meeting.jpg" alt="Lime Construction team gathered around the table" />
           <button class="play-btn" type="button" aria-label="Play film (placeholder)">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           </button>
@@ -804,31 +853,26 @@
             <p class="section-label">Our people</p>
             <h2>Crafting excellence as a team</h2>
             <p class="team-lead">
-              A knowledgeable crew across build, facilities, M&amp;E and plumbing — backed by partners who share our standards. Photos below are placeholders until you swap in the Lime team.
+              The Lime crew — professionalism, family values and respect, on site and in the office.
             </p>
           </div>
           <a class="btn btn-lime" href="#contact">Explore all</a>
         </div>
         <div class="team-grid">
           <article class="person reveal">
-            <img src="assets/team-1.jpg" alt="Placeholder team portrait" />
-            <h3>Contracts lead</h3>
-            <p>Commercial &amp; programmes</p>
+            <img src="assets/team-van.jpg" alt="Lime Construction team member by the company van" />
+            <h3>On the tools</h3>
+            <p>Site &amp; delivery</p>
           </article>
           <article class="person reveal">
-            <img src="assets/team-2.jpg" alt="Placeholder team portrait" />
-            <h3>Facilities lead</h3>
-            <p>Reactive &amp; planned FM</p>
+            <img src="assets/team-trades.jpg" alt="Lime Construction tradesperson" />
+            <h3>Craft &amp; finish</h3>
+            <p>Building fabric</p>
           </article>
           <article class="person reveal">
-            <img src="assets/team-3.jpg" alt="Placeholder team portrait" />
-            <h3>M&amp;E supervisor</h3>
-            <p>Electrical &amp; compliance</p>
-          </article>
-          <article class="person reveal">
-            <img src="assets/team-4.jpg" alt="Placeholder team portrait" />
-            <h3>Client liaison</h3>
-            <p>Property managers &amp; housing</p>
+            <img src="assets/team-natalie.jpg" alt="Natalie, Lime Construction Group" />
+            <h3>Natalie</h3>
+            <p>Lime Construction Group</p>
           </article>
         </div>
       </div>
