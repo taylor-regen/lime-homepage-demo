@@ -418,55 +418,87 @@
 
     /* —— Services —— */
     .services {
-      padding: 4rem 0 3rem;
+      padding: 4rem 0 3.5rem;
     }
     .services-head {
-      text-align: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
+      max-width: 40rem;
     }
     .services-head .services-lead {
-      margin-inline: auto;
       max-width: 48ch;
     }
-    .services-grid {
+    .service-track-wrap {
+      width: min(100% - 1.5rem, 1320px);
+      margin-inline: auto;
+    }
+    .service-track {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(240px, 280px);
       gap: 1.25rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 0.25rem 0 1rem;
+      -webkit-overflow-scrolling: touch;
     }
-    .service {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 1.75rem 1.5rem;
-      transition: border-color 0.3s var(--ease), transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    .service-track::-webkit-scrollbar { height: 4px; }
+    .service-track::-webkit-scrollbar-track { background: rgba(18, 20, 18, 0.06); border-radius: 999px; }
+    .service-track::-webkit-scrollbar-thumb {
+      background: rgba(18, 20, 18, 0.22);
+      border-radius: 999px;
     }
-    .service:hover {
-      border-color: rgba(126, 194, 66, 0.5);
-      transform: translateY(-4px);
-      box-shadow: 0 18px 40px rgba(18, 20, 18, 0.07);
+    .service-card {
+      display: grid;
+      gap: 0.85rem;
+      scroll-snap-align: start;
     }
-    .service-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: var(--lime-soft);
-      color: var(--lime-deep);
+    .service-card-media {
+      aspect-ratio: 4 / 5;
+      border-radius: 1.15rem;
+      overflow: hidden;
+      background: var(--charcoal);
+    }
+    .service-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s var(--ease);
+    }
+    .service-card:hover .service-card-media img { transform: scale(1.05); }
+    .service-card-media.is-lime {
+      background: var(--lime);
       display: grid;
       place-items: center;
-      margin-bottom: 1.15rem;
+      padding: 1.5rem;
     }
-    .service-icon svg { width: 24px; height: 24px; }
-    .service h3 {
+    .service-card-media.is-lime span {
       font-family: var(--display);
-      font-size: 1.35rem;
+      font-size: 1.65rem;
       font-weight: 600;
-      margin: 0 0 0.6rem;
+      color: #fff;
+      text-align: center;
+      line-height: 1.2;
       letter-spacing: -0.02em;
     }
-    .service p {
+    .service-card .meta {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--muted-light);
       margin: 0;
+    }
+    .service-card h3 {
+      font-family: var(--display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin: 0;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+    .service-card .desc {
+      margin: 0;
+      font-size: 0.88rem;
       color: var(--muted);
-      font-size: 0.95rem;
+      line-height: 1.45;
     }
 
     /* —— Lime Way band —— */
@@ -647,7 +679,6 @@
       .about-card-inner,
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
       .stats { grid-template-columns: 1fr 1fr; }
-      .services-grid { grid-template-columns: 1fr; }
       .team-grid { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; }
       .quote-grid { grid-template-columns: 1fr; }
       .team-head { flex-direction: column; align-items: flex-start; }
@@ -655,6 +686,7 @@
       .feature-frame img { aspect-ratio: 16 / 10; }
       .about-overlap { min-height: 300px; }
       .about-overlap .mid { right: 12%; }
+      .service-track { grid-auto-columns: minmax(220px, 72vw); }
     }
     @media (max-width: 560px) {
       .stats { grid-template-columns: 1fr; }
@@ -822,32 +854,107 @@
       <div class="wrap">
         <div class="services-head reveal">
           <p class="section-label">Services</p>
-          <h2>Your project. Your vision. Made real.</h2>
+          <h2>What we deliver</h2>
           <p class="services-lead">
-            From reactive call-outs to full-scale refurbishment — facilities management, M&amp;E and plumbing &amp; heating across the South West.
+            Electrical, plumbing &amp; heating, build and facilities — scroll for the full Lime service range.
           </p>
         </div>
-        <div class="services-grid">
-          <article class="service reveal">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+      </div>
+      <div class="service-track-wrap">
+        <div class="service-track" tabindex="0" aria-label="Lime Construction services">
+          <article class="service-card">
+            <div class="service-card-media">
+              <img src="assets/svc-electrical.jpg" alt="" loading="lazy" />
             </div>
-            <h3>Build &amp; Facilities Management</h3>
-            <p>High-quality builds and renovations across residential, social housing, commercial and industrial — plus planned and reactive maintenance.</p>
+            <p class="meta">Electrical · M&amp;E</p>
+            <h3>Electrical Emergencies</h3>
+            <p class="desc">Fast, reliable solutions to resolve electrical issues safely and efficiently.</p>
           </article>
-          <article class="service reveal">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg>
+          <article class="service-card">
+            <div class="service-card-media">
+              <img src="assets/site-value.jpg" alt="" loading="lazy" />
             </div>
-            <h3>Mechanical &amp; Electrical</h3>
-            <p>Certified electrical installations, upgrades and testing — supporting safe, efficient and fully compliant project delivery.</p>
+            <p class="meta">Electrical · Compliance</p>
+            <h3>Inspections &amp; EICR Testing</h3>
+            <p class="desc">Comprehensive inspections and testing to keep properties safe and fully compliant.</p>
           </article>
-          <article class="service reveal">
-            <div class="service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v3M8 8h8M7 21h10a2 2 0 0 0 2-2v-7a6 6 0 0 0-12 0v7a2 2 0 0 0 2 2z"/></svg>
+          <article class="service-card">
+            <div class="service-card-media">
+              <img src="assets/site-ceiling.jpg" alt="" loading="lazy" />
             </div>
-            <h3>Plumbing &amp; Heating</h3>
-            <p>Reliable plumbing, heating and boiler works to keep your property running smoothly through every season.</p>
+            <p class="meta">Electrical</p>
+            <h3>Installations &amp; Repairs</h3>
+            <p class="desc">Expert installation and repair of lighting, power systems and appliances.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-card-media is-lime" aria-hidden="true"><span>PAT<br />Testing</span></div>
+            <p class="meta">Electrical · Compliance</p>
+            <h3>PAT Testing</h3>
+            <p class="desc">Ensuring electrical appliances are safe, reliable and compliant with regulations.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-card-media">
+              <img src="assets/site-residential.jpg" alt="" loading="lazy" />
+            </div>
+            <p class="meta">Electrical · Housing</p>
+            <h3>Commercial &amp; Social Housing</h3>
+            <p class="desc">Tailored electrical solutions for managed properties, housing providers and commercial spaces.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-card-media">
+              <img src="assets/site-handshake.jpg" alt="" loading="lazy" />
+            </div>
+            <p class="meta">Electrical · Development</p>
+            <h3>Property Development &amp; Construction</h3>
+            <p class="desc">Electrical expertise for larger projects, from installation through to full compliance.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-card-media">
+              <img src="assets/site-img7625.jpg" alt="" loading="lazy" />
+            </div>
+            <p class="meta">Electrical · Management</p>
+            <h3>Property Management Services</h3>
+            <p class="desc">Ongoing maintenance, upgrades and inspections for managed properties.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-card-media">
+              <img src="assets/site-faucets.jpg" alt="" loading="lazy" />
+            </div>
+            <p class="meta">Plumbing &amp; Heating</p>
+            <h3>Emergency Plumbing</h3>
+            <p class="desc">Rapid response to urgent plumbing issues, minimising disruption.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-card-media">
+              <img src="assets/hero-site.jpg" alt="" loading="lazy" />
+            </div>
+            <p class="meta">Plumbing &amp; Heating · Gas Safe</p>
+            <h3>Boilers &amp; Heating Systems</h3>
+            <p class="desc">Installation, maintenance and repair of heating systems for commercial and social housing.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-card-media">
+              <img src="assets/site-ceiling.jpg" alt="" loading="lazy" />
+            </div>
+            <p class="meta">Build &amp; FM</p>
+            <h3>Refurbishment &amp; Renovation</h3>
+            <p class="desc">High-quality refurbishment across residential, social housing, commercial and industrial.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-card-media">
+              <img src="assets/team-trades.jpg" alt="" loading="lazy" />
+            </div>
+            <p class="meta">Build &amp; FM</p>
+            <h3>Building Fabric Repairs</h3>
+            <p class="desc">Repairs and upgrades to walls, floors, ceilings, roofs and structural elements.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-card-media">
+              <img src="assets/team-van.jpg" alt="" loading="lazy" />
+            </div>
+            <p class="meta">Build &amp; FM</p>
+            <h3>Facilities &amp; Reactive Works</h3>
+            <p class="desc">Planned and reactive maintenance — keeping buildings functional and occupants safe.</p>
           </article>
         </div>
       </div>
