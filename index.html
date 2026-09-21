@@ -52,7 +52,7 @@
       margin-inline: auto;
     }
 
-    /* —— Header —— */
+    /* -- Header -- */
     .site-header {
       position: sticky;
       top: 0;
@@ -142,7 +142,7 @@
     .nav-toggle span::before { top: -6px; }
     .nav-toggle span::after { top: 6px; }
 
-    /* —— Hero —— */
+    /* -- Hero -- */
     .hero {
       padding: 3.5rem 0 2.5rem;
     }
@@ -151,24 +151,6 @@
       grid-template-columns: 1fr 1.15fr;
       gap: 3rem;
       align-items: center;
-    }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--lime-deep);
-      margin-bottom: 1.1rem;
-    }
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--lime);
     }
     .hero h1 {
       font-family: var(--display);
@@ -190,9 +172,6 @@
       flex-wrap: wrap;
       gap: 0.75rem;
     }
-    .hero-visual {
-      position: relative;
-    }
     .hero-visual > img {
       width: 100%;
       aspect-ratio: 4 / 3.1;
@@ -200,34 +179,7 @@
       border-radius: var(--radius-lg);
       box-shadow: 0 28px 60px rgba(18, 20, 18, 0.12);
     }
-    .hero-badge {
-      position: absolute;
-      left: -1.2rem;
-      bottom: 12%;
-      width: 118px;
-      height: 118px;
-      border-radius: 50%;
-      background: var(--white);
-      box-shadow: 0 12px 36px rgba(18, 20, 18, 0.12);
-      display: grid;
-      place-items: center;
-      animation: floaty 5s ease-in-out infinite;
-    }
-    .hero-badge svg {
-      width: 100%;
-      height: 100%;
-    }
-    .hero-badge .spin {
-      transform-origin: 50% 50%;
-      animation: spin 18s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    @keyframes floaty {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    /* —— Stats —— */
+    /* -- Stats -- */
     .stats {
       margin-top: 3.5rem;
       padding: 1.75rem 0;
@@ -251,7 +203,7 @@
       color: var(--muted);
     }
 
-    /* —— Intro —— */
+    /* -- Intro -- */
     .intro {
       padding: 4.5rem 0 2rem;
       text-align: center;
@@ -270,7 +222,7 @@
       color: var(--muted-light);
     }
 
-    /* —— About —— */
+    /* -- About -- */
     .about {
       padding: 2rem 0 3rem;
     }
@@ -284,14 +236,6 @@
       grid-template-columns: 1fr 1.05fr;
       gap: 3rem;
       align-items: center;
-    }
-    .section-label {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--lime-deep);
-      margin-bottom: 0.65rem;
     }
     .about h2,
     .services h2,
@@ -405,7 +349,7 @@
     .about-card .checklist li { max-width: none; }
     .about-card p { max-width: 48ch; }
 
-    /* —— Services —— */
+    /* -- Services -- */
     .services {
       padding: 4rem 0 3.5rem;
     }
@@ -490,7 +434,7 @@
       line-height: 1.45;
     }
 
-    /* —— Lime News —— */
+    /* -- Lime News -- */
     .news {
       padding: 5rem 0 3rem;
     }
@@ -552,7 +496,7 @@
       line-height: 1.45;
     }
 
-    /* —— Quotes —— */
+    /* -- Quotes -- */
     .quotes {
       padding: 3rem 0 5rem;
       text-align: center;
@@ -598,7 +542,7 @@
       margin-bottom: 0.15rem;
     }
 
-    /* —— Footer —— */
+    /* -- Footer -- */
     .site-footer {
       background: var(--charcoal);
       color: rgba(255, 255, 255, 0.78);
@@ -639,7 +583,7 @@
       color: rgba(255, 255, 255, 0.5);
     }
 
-    /* —— Reveal —— */
+    /* -- Reveal -- */
     .reveal {
       opacity: 0;
       transform: translateY(22px);
@@ -647,7 +591,7 @@
     }
     .reveal.is-in { opacity: 1; transform: none; }
 
-    /* —— Responsive —— */
+    /* -- Responsive -- */
     @media (max-width: 980px) {
       .nav-links, .nav .btn-dark { display: none; }
       .nav-toggle { display: inline-flex; }
@@ -671,7 +615,6 @@
       .news-grid { grid-template-columns: 1fr; max-width: 400px; margin-inline: auto; }
       .quote-grid { grid-template-columns: 1fr; }
       .news-head { flex-direction: column; align-items: flex-start; }
-      .hero-badge { left: 1rem; bottom: 1rem; width: 96px; height: 96px; }
       .about-overlap { min-height: 280px; }
       .service-track { grid-auto-columns: minmax(220px, 72vw); }
     }
@@ -702,10 +645,9 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="reveal">
-          <p class="eyebrow">South West · FM · M&amp;E · Plumbing</p>
           <h1>Modern construction.<br />Exceptional delivery.</h1>
           <p class="hero-copy">
-            Your trusted partner for facilities management, mechanical &amp; electrical, plumbing, heating and building fabric works — from planned maintenance to full-scale refurbishment.
+            Your trusted partner for facilities management, mechanical &amp; electrical, plumbing, heating and building fabric works, from planned maintenance to full-scale refurbishment.
           </p>
           <div class="hero-actions">
             <a class="btn btn-lime" href="#contact">Contact us</a>
@@ -714,20 +656,6 @@
         </div>
         <div class="hero-visual reveal">
           <img src="assets/site-handshake.jpg" alt="Lime Construction team greeting on site" />
-          <div class="hero-badge" aria-hidden="true">
-            <svg viewBox="0 0 120 120">
-              <circle cx="60" cy="60" r="28" fill="#7ec242" />
-              <text x="60" y="64" text-anchor="middle" fill="#121412" font-size="18" font-family="Fraunces, Georgia, serif" font-weight="700">L</text>
-              <g class="spin">
-                <defs>
-                  <path id="circlePath" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" />
-                </defs>
-                <text fill="#2c322c" font-size="9.5" font-family="Plus Jakarta Sans, sans-serif" font-weight="600" letter-spacing="2.2">
-                  <textPath href="#circlePath">LIME CONSTRUCTION · SOUTH WEST · </textPath>
-                </text>
-              </g>
-            </svg>
-          </div>
         </div>
       </div>
 
@@ -754,7 +682,7 @@
     <section class="intro" id="about">
       <div class="wrap reveal">
         <p>
-          We specialise in skilled refurbishment, renovation and maintenance —
+          We specialise in skilled refurbishment, renovation and maintenance,
           delivering <span class="hl">innovative</span>, <span class="hl">reliable</span>, and
           <span class="hl">client-focused</span> solutions for social housing, commercial clients and property managers.
         </p>
@@ -765,7 +693,6 @@
       <div class="about-stack">
         <div class="wrap about-row">
           <div class="reveal">
-            <p class="section-label">About us</p>
             <h2>We build with care, not just with tools.</h2>
             <p>
               We prioritise professionalism, family values and a culture of respect. Whether it’s a small repair, regular maintenance or full-scale refurbishment, we think ahead, embrace feedback and learn from every experience.
@@ -777,7 +704,7 @@
               </li>
               <li>
                 <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
-                Certified M&amp;E — safe, efficient, compliant
+                Certified M&amp;E: safe, efficient, compliant
               </li>
               <li>
                 <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
@@ -802,13 +729,12 @@
               <img class="inset" src="assets/site-residential.jpg" alt="Residential construction" />
             </div>
             <div>
-              <p class="section-label">The Lime story</p>
               <h2>Welcome to Lime Construction.</h2>
               <p>
                 Our team has over 30 years’ experience in building fabric works, facilities management, mechanical &amp; electrical and plumbing &amp; heating. Over the past five years we have deepened partnerships with commercial clients, property managers and social housing providers.
               </p>
               <p>
-                We are proud of a knowledgeable team supported by a trusted supply chain — ensuring projects support the communities we serve while holding the highest standards.
+                We are proud of a knowledgeable team supported by a trusted supply chain, ensuring projects support the communities we serve while holding the highest standards.
               </p>
               <ul class="checklist">
                 <li>
@@ -837,10 +763,9 @@
     <section class="services" id="services">
       <div class="wrap">
         <div class="services-head reveal">
-          <p class="section-label">Services</p>
           <h2>What we deliver</h2>
           <p class="services-lead">
-            Electrical, plumbing &amp; heating, build and facilities — scroll for the full Lime service range.
+            Electrical, plumbing &amp; heating, build and facilities. Scroll for the full Lime service range.
           </p>
         </div>
       </div>
@@ -932,7 +857,7 @@
             </div>
             <p class="meta">Build &amp; FM</p>
             <h3>Facilities &amp; Reactive Works</h3>
-            <p class="desc">Planned and reactive maintenance — keeping buildings functional and occupants safe.</p>
+            <p class="desc">Planned and reactive maintenance, keeping buildings functional and occupants safe.</p>
           </article>
         </div>
       </div>
@@ -942,7 +867,6 @@
       <div class="wrap">
         <div class="news-head reveal">
           <div class="text">
-            <p class="section-label">Lime News</p>
             <h2>Latest from Lime</h2>
             <p class="news-lead">
               Insights, project updates and expert guidance from the Lime Construction team.
@@ -964,7 +888,7 @@
               <img src="assets/news-legionella.jpg" alt="" />
               <p class="meta">Sep 9, 2026</p>
               <h3>Legionella Risk Assessments: A Landlord’s Practical Guide</h3>
-              <p>Legionella isn’t the most talked-about landlord responsibility, but it’s one of the clearest — every landlord has a legal duty to assess.</p>
+              <p>Legionella isn’t the most talked-about landlord responsibility, but it’s one of the clearest. Every landlord has a legal duty to assess.</p>
             </a>
           </article>
           <article class="news-card reveal">
@@ -982,10 +906,9 @@
     <section class="quotes" id="testimonials">
       <div class="wrap">
         <div class="reveal">
-          <p class="section-label">What clients say</p>
           <h2>Trusted by partners who need it done right</h2>
           <p class="quotes-lead">
-            Sample testimonial placeholders for the redesign — swap in real Lime client quotes when you’re ready.
+            Sample testimonial placeholders for the redesign. Swap in real Lime client quotes when you’re ready.
           </p>
         </div>
         <div class="quote-grid">
@@ -997,7 +920,7 @@
             </footer>
           </blockquote>
           <blockquote class="quote reveal">
-            <p>“They treat social housing stock with the same care as a flagship refurb — that attitude shows.”</p>
+            <p>“They treat social housing stock with the same care as a flagship refurb. That attitude shows.”</p>
             <footer>
               <strong>Housing provider</strong>
               Supported &amp; community housing
@@ -1030,8 +953,8 @@
         </div>
         <div>
           <h4>Office hours</h4>
-          <p>Mon–Fri: 9 AM – 5 PM</p>
-          <p>Saturday: 9 AM – 12 PM</p>
+          <p>Mon-Fri: 9 AM to 5 PM</p>
+          <p>Saturday: 9 AM to 12 PM</p>
           <p>Sunday: Closed</p>
         </div>
       </div>
